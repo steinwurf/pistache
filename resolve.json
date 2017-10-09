@@ -1,0 +1,18 @@
+[
+    {
+        "name": "waf-tools",
+        "resolver": "git",
+        "method": "semver",
+        "major": 4,
+        "sources": [
+            "github.com/steinwurf/waf-tools.git"
+        ]
+    },
+    {
+        "name": "pistache-source",
+        "resolver": "git",
+        "method": "checkout",
+        "checkout": "78f924a837abd9ec81966a607bb0e575a3ac6f95",
+        "sources": ["git@github.com:steinwurf/pistache-source.git"]
+    }
+]
