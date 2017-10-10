@@ -12,7 +12,7 @@
         "name": "pistache-source",
         "resolver": "git",
         "method": "checkout",
-        "checkout": "78f924a837abd9ec81966a607bb0e575a3ac6f95",
+        "checkout": "bb1fa6baf0205cba88819f76268a635a59dca0c5",
         "sources": ["git@github.com:steinwurf/pistache-source.git"]
     }
 ]
