@@ -7,12 +7,22 @@ APPNAME = 'pistache'
 VERSION = '0.0.0'
 
 
+def configure(conf):
+    if conf.is_mkspec_platform('linux'):
+
+        if not conf.env['LIB_PTHREAD']:
+            conf.check_cxx(lib='pthread')
+
 def build(bld):
 
     bld.env.append_unique(
         'DEFINES_STEINWURF_VERSION',
         'STEINWURF_PISTACHE_VERSION="{}"'.format(
             VERSION))
+
+    use_flags = []
+    if bld.is_mkspec_platform('linux'):
+        use_flags += ['PTHREAD']
 
     pistache_path = bld.dependency_path('pistache-source')
     src_path = os.path.realpath(pistache_path)
@@ -26,6 +36,7 @@ def build(bld):
         source=bld.root.ant_glob(src_path),
         includes=[include_path],
         target='pistache',
-        use=[],
+        use=use_flags,
         export_includes=[include_path]
     )
+    bld.recurse('examples')
