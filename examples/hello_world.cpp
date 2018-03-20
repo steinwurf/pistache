@@ -31,7 +31,8 @@ int main() {
     std::cout << "Starting server. Test with the following command: "
               << "\"curl http://127.0.0.1:" << addr.port() << "\"\n";
 
-    server.serve();
-
+    std::cout << "Press Enter to Exit" << '\n';
+    server.serveThreaded();
+    std::cin.get();
     server.shutdown();
 }

@@ -39,4 +39,8 @@ def build(bld):
         use=use_flags,
         export_includes=[include_path]
     )
-    bld.recurse('examples')
+    if bld.is_toplevel():
+        # Only build tests when executed from the top-level wscript,
+        # i.e. not when included as a dependency
+        bld.recurse('test')
+        bld.recurse('examples')

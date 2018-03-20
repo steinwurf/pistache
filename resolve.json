@@ -12,7 +12,15 @@
         "name": "pistache-source",
         "resolver": "git",
         "method": "checkout",
-        "checkout": "8ce1ed8045851ef394052b424acd4bf9643f0175",
+        "checkout": "1a0b1a0f91771a458ddd669cbdbf7863f4fdb4ed",
         "sources": ["git@github.com:steinwurf/pistache-source.git"]
+    },
+    {
+        "name": "gtest",
+        "internal": true,
+        "resolver": "git",
+        "method": "semver",
+        "major": 4,
+        "sources": ["github.com/steinwurf/gtest.git"]
     }
 ]
