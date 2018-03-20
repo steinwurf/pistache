@@ -6,7 +6,8 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Patch: Added unit tests from pistache repository.
+* Patch: Fix memory leaks.
 
 1.0.0
 -----

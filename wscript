@@ -4,7 +4,7 @@
 import os
 
 APPNAME = 'pistache'
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 
 def configure(conf):
