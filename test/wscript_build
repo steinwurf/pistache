@@ -1,0 +1,13 @@
+# encoding: utf-8
+import os
+
+pistache_path = bld.dependency_path('pistache-source')
+test_src_path = os.path.realpath(pistache_path)
+test_src_path = os.path.relpath(test_src_path, bld.root.abspath())
+test_src_path = '{}/tests/*.cc'.format(test_src_path)
+
+bld.program(
+    features='cxx test',
+    source=['pistache_tests.cpp'] + bld.root.ant_glob(test_src_path),
+    target='pistache_tests',
+    use=['pistache', 'gtest'])

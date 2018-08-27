@@ -8,10 +8,8 @@ VERSION = '1.0.1'
 
 
 def configure(conf):
-    if conf.is_mkspec_platform('linux'):
-
-        if not conf.env['LIB_PTHREAD']:
-            conf.check_cxx(lib='pthread')
+    if conf.is_mkspec_platform('linux') and not conf.env['LIB_PTHREAD']:
+        conf.check_cxx(lib='pthread')
 
 def build(bld):
 
@@ -24,19 +22,17 @@ def build(bld):
     if bld.is_mkspec_platform('linux'):
         use_flags += ['PTHREAD']
 
-    pistache_path = bld.dependency_path('pistache-source')
-    src_path = os.path.realpath(pistache_path)
-    src_path = os.path.relpath(src_path, bld.root.abspath())
-    src_path = '{}/src/**/*.cc'.format(src_path)
-
-    include_path = '{}/include/'.format(pistache_path)
+    pistache_path = bld.root.find_dir(bld.dependency_path('pistache-source'))
+    src_path = pistache_path.ant_glob('src/**/*.cc')
+    include_path = pistache_path.find_dir('include/')
 
     bld.stlib(
         features='cxx',
-        source=bld.root.ant_glob(src_path),
+        source=src_path,
         includes=[include_path],
         target='pistache',
         use=use_flags,
+        defines=['ONLY_C_LOCALE=1'],
         export_includes=[include_path]
     )
     if bld.is_toplevel():
